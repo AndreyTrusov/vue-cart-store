@@ -10,7 +10,7 @@ The primary aim of this project is to demonstrate the use of **Pinia** as a cent
 
 ## ✨ Features
 
-### 🛍️ Product List
+### Product List
 - Displays a list of products with:
   - **Images** for visual representation.
   - **Names** and **prices** of each product.
@@ -29,11 +29,6 @@ The primary aim of this project is to demonstrate the use of **Pinia** as a cent
   - Product details: **name, price, and quantity**.
   - **Total price** calculated in real-time.
 
-### 📦 Pinia Integration
-- Centralized state management for:
-  - Product data.
-  - Cart actions (add, remove, update quantities).
-  - Total price calculations.
 
 <img width="968" alt="image" src="https://github.com/user-attachments/assets/e1a21456-0c41-46e9-a8b9-9d5b82b5d9ce">
 

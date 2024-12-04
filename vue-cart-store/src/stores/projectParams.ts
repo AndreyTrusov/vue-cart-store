@@ -38,7 +38,16 @@ export const useCartStore = defineStore('cart', {
 
         getTotal() {
             return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
-        }
+        },
+        decreaseItemQuantity(productId: number) {
+            const existingItem = this.cart.find((item) => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity--;
+                if (existingItem.quantity === 0) {
+                    this.removeFromCart(productId);
+                }
+            }
+        },
     },
 
     getters: {

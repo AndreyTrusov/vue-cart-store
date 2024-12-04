@@ -21,6 +21,10 @@ export default defineComponent({
         this.cart.splice(productIndex, 1);
       }
     },
+    decreaseQuantity(productId: number) {
+      const cartStore = useCartStore();
+      cartStore.decreaseItemQuantity(productId);
+    },
   }
 })
 </script>
@@ -36,6 +40,7 @@ export default defineComponent({
           <p>${{ item.price * item.quantity }}</p>
         </div>
         <button @click="removeFromCart(item.id)" class="remove-btn">Remove</button>
+        <button class="decrease-btn" @click="decreaseQuantity(item.id)">Remove One</button>
       </div>
       <h3>Total: ${{ totalCost }}</h3>
     </div>
@@ -47,14 +52,15 @@ export default defineComponent({
 
 <style scoped>
 .cart {
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 30px;
 }
 
 .cart-items {
@@ -68,14 +74,9 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: #fff;
+  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.cart-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cart-item-image {
@@ -90,17 +91,31 @@ h2 {
   padding-left: 15px;
 }
 
-.remove-btn {
+.remove-btn,
+.decrease-btn {
   padding: 8px 15px;
-  background-color: #dc3545;
-  color: white;
+  margin-left: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
 .remove-btn:hover {
   background-color: #c82333;
+}
+
+.decrease-btn {
+  background-color: #ffc107;
+  color: white;
+}
+
+.decrease-btn:hover {
+  background-color: #e0a800;
 }
 </style>
